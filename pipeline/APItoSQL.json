@@ -25,11 +25,43 @@
 							"type": "JsonReadSettings"
 						}
 					},
-					"enableStaging": false
+					"sink": {
+						"type": "AzureSqlSink",
+						"writeBehavior": "insert",
+						"sqlWriterUseTableLock": false
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"path": "$['@split(name, \" \")[0]']"
+								},
+								"sink": {
+									"name": "FirstName"
+								}
+							},
+							{
+								"source": {
+									"path": "$['@split(name, \" \")[1]']"
+								},
+								"sink": {
+									"name": "LastName"
+								}
+							}
+						]
+					}
 				},
 				"inputs": [
 					{
 						"referenceName": "Json1",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "EmployeesSQL",
 						"type": "DatasetReference"
 					}
 				]
