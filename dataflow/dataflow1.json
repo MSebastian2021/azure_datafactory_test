@@ -26,7 +26,13 @@
 				"     requestInterval: 0,",
 				"     paginationRules: ['supportRFC5988' -> 'true'],",
 				"     responseFormat: ['type' -> 'json', 'documentForm' -> 'documentPerLine']) ~> HTTPAPI",
-				"HTTPAPI select(skipDuplicateMapInputs: true,",
+				"HTTPAPI select(mapColumn(",
+				"          each(match(split(name,' ')[0]),",
+				"               FirstName = $$),",
+				"          each(match(split(name,' ')[1]),",
+				"               LastName = $$)",
+				"     ),",
+				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true) ~> select1"
 			]
 		}
