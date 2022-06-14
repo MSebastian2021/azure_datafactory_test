@@ -1,0 +1,9 @@
+{
+	"name": "dftestmaria",
+	"location": "francecentral",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "8e3ac24f-5def-43c7-ac84-3f650d658fdb",
+		"tenantId": "e5d15069-41a2-48be-a3f3-d7f52db16425"
+	}
+}
