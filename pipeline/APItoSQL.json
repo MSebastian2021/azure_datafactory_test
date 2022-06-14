@@ -49,6 +49,11 @@
 								"sink": {
 									"name": "LastName"
 								}
+							},
+							{
+								"source": {
+									"path": "$['Column_1']"
+								}
 							}
 						]
 					}
@@ -65,6 +70,26 @@
 						"type": "DatasetReference"
 					}
 				]
+			},
+			{
+				"name": "APIToSQLDataflow",
+				"type": "ExecuteDataFlow",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "1.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"compute": {
+						"coreCount": 8,
+						"computeType": "General"
+					},
+					"traceLevel": "Fine"
+				}
 			}
 		],
 		"annotations": []
